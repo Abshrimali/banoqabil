@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation using html and css</title>
+    <style>
+        .div1 {
+            height: 100px;
+            width: 200px;
+            border-bottom-right-radius: 50px;
+            border-bottom-left-radius: 50px;
+            border-top-left-radius: 50px;
+            border-bottom-left-radius: 50px;
+            background-color: aqua;
+            animation-iteration-count: infinite;
+            animation-name: Sami;
+            animation-duration: 8s;
+            position: relative;
+            animation-direction: alternate;
+            text-align: center;
+            padding-top: 5px;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+        }
+
+        @keyframes Sami {
+            0% {
+                background-color: grey;
+                left: 0px;
+                top: 300px;
+            }
+
+            25% {
+                background-color: rgb(7, 226, 7);
+                left: 650px;
+                top: 0px
+            }
+
+            50% {
+                background-color: blue;
+                left: 1330px;
+                top: 300px;
+            }
+
+            70% {
+                background-color: maroon;
+                left: 650px;
+                top: 650px;
+            }
+
+            100% {
+                background-color: blueviolet;
+                left: 0px;
+                top: 300px
+            }
+        }
+
+.container{
+    height: 45vh;
+    /* width: 300px; */
+    width: 30%;
+    border: 2px solid rgb(126, 233, 122);
+    margin:auto;
+    margin-top: 50px;
+    padding: 10px;
+    overflow: auto;
+    border-radius: 23px;
+    border-right-color: pink;
+    border-left-color: greenyellow;
+    border-top-color: red;
+    border-bottom-color: blue;
+}
+h2{ 
+    text-align: center;
+}
+.footer{
+    font-size: medium;
+    font-weight: bold;
+    margin-left: 50%;
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="div1">
+        <h1>Bano Qabil</h1>
+    </div>
+ 
+    
+</body>
+
+</html>
