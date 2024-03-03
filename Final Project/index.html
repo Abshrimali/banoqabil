@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Navigation Bar</title>
+    <!-- Add CSS link here -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Add Font Awesome CSS link here -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Add Google Fonts link here -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Add Bootstrap CSS link here -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom styles can be added here */
+        /* Resetting default margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Styling for topnav container */
+        .topnav {
+            background-color: #f8f9fa;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Styling for contact number */
+        .contact-no {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+        }
+
+        /* Styling for social links */
+        .social-links a {
+            margin: 0 5px;
+            color: black;
+            /* Initial color of icons */
+            transition: color 0.3s;
+            /* Smooth transition effect */
+        }
+
+        .social-links a:hover {
+            color: #007bff;
+            /* Color change on hover */
+        }
+
+        /* Styling for header */
+        .header {
+            background-color: #000;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Styling for logo */
+        .logo h1 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(to right, #000, #ffd700);
+            /* Gradient text */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Styling for icons */
+        .header-icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-icons i {
+            margin-right: 20px;
+            font-size: 24px;
+            color: #fff;
+            cursor: pointer;
+            transition: color 0.3s;
+            /* Smooth transition effect */
+        }
+
+        .header-icons i:hover {
+            color: #ffd700;
+            /* Change color on hover */
+        }
+
+        /* Styling for navigation */
+        nav {
+            background-color: #333;
+            padding: 10px 20px;
+            width: 100%;
+            font-family: 'Roboto', sans-serif;
+            /* Change font family */
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            position: relative;
+            margin-right: 20px;
+            transition: opacity 0.3s;
+            /* Smooth transition effect */
+        }
+
+        nav ul li:hover {
+            opacity: 0.7;
+            /* Reduce opacity on hover */
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            /* Align icon and text vertically */
+        }
+
+        nav ul li:hover ul {
+            display: block;
+        }
+
+        nav ul ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #333;
+            padding: 10px;
+        }
+
+        nav ul ul li {
+            width: 150px;
+            margin-top: 10px;
+        }
+
+        nav ul ul li a {
+            color: #fff;
+        }
+
+        nav ul ul li a:hover {
+            color: #ffd700;
+        }
+
+        /* Styling for banner container */
+        .banner-container {
+            position: relative;
+            max-width: 100%;
+            overflow: hidden;
+            height: 660px;
+            /* Set height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: -1;
+        }
+
+        /* Styling for banner content */
+        .banner-content {
+            text-align: center;
+            z-index: 1;
+        }
+
+        /* Styling for banner buttons */
+        .banner-buttons {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        .banner-buttons button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+            outline: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .banner-buttons button:hover {
+            background-color: #555;
+        }
+
+        .categories {
+            justify-content: space-evenly;
+            align-items: center;
+            height: 150px;
+            width: auto;
+            display: flex;
+            border: 1px solid gray;
+            margin: 20px 30px 20px 30px;
+            border-radius: 20px;
+        }
+
+        .categories i {
+            font-size: 28px;
+            color: #333;
+        }
+
+        .categories-heading {
+            font-size: 38px;
+            text-align: center;
+            margin: 20px 0px 20px 0px;
+            text-transform: capitalize;
+            letter-spacing: 3px;
+        }
+
+        /* Styling for card */
+
+        .products {
+            height: auto;
+            width: auto;
+            margin: 40px 40px 40px 40px;
+            background-color: rgb(180, 180, 180);
+            /* opacity: 0.7; */
+            padding: 30px 30px;
+            border-radius: 10px;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px 20px 20px 50px;
+            overflow: hidden;
+            width: 250px;
+            /* Set width */
+            height: 300px;
+            /* Set height */
+            display: inline-block;
+            /* Make cards inline */
+
+        }
+
+        .card img {
+            width: 100%;
+            height: 80%;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-content h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            text-align: center;
+        }
+
+        /* .card-content p {
+    height: 20px;
+    font-size: 16px;
+    color: #555;
+} */
+
+        /* Your custom styles can be added here */
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 50px 0;
+        }
+
+        .footer h4 {
+            color: #ffd700;
+            margin-bottom: 20px;
+        }
+
+        .footer p,
+        .footer ul {
+            margin-bottom: 20px;
+        }
+
+        .footer a {
+            color: #fff;
+        }
+
+        .footer a:hover {
+            color: #ffd700;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- topnav start -->
+    <div class="topnav">
+        <div class="contact-no">
+            <i class="fas fa-headset"></i><span>&nbsp;&nbsp;+92 301 234779</span>
+        </div>
+        <div class="social-links">
+            <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+    <!-- topnav end -->
+
+    <!-- Header start -->
+    <header class="header" id="header">
+        <div class="logo">
+            <h1>AB Furniture</h1>
+        </div>
+        <div class="header-icons">
+            <i class="fas fa-search" id="searchIcon"></i>
+            <i class="fas fa-shopping-cart"></i>
+            <i class="far fa-user-circle"></i>
+        </div>
+    </header>
+    <!-- Header end -->
+
+    <!-- Main navigation start -->
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li>
+                <a href="#">Products&nbsp;&nbsp;<i class="fa-solid fa-caret-down"></i></a>
+                <ul>
+                    <li><a href="#">Bedroom</a></li>
+                    <li><a href="#">Dinning</a></li>
+                    <li><a href="#">Office</a></li>
+                    <li><a href="#">New Arrival</a></li>
+                    <li><a href="#">Chairs</a></li>
+                </ul>
+            </li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <!-- Main navigation end -->
+
+    <!-- Banner start -->
+    <div class="banner-container">
+        <!-- Add your video or image here -->
+        <!-- Example: -->
+        <video autoplay muted loop>
+            <source src="assets/furni_video.mp4" type="video/mp4">
+        </video>
+
+        <!-- Banner content -->
+        <div class="banner-content">
+            <h2>Your Heading</h2>
+            <p>Your paragraph</p>
+        </div>
+
+        <!-- Banner buttons -->
+        <div class="banner-buttons">
+            <button>&#9664;</button>
+            <button>&#9654;</button>
+        </div>
+    </div>
+    <!-- Banner end -->
+
+    <!-- categories -->
+    <h1 class="categories-heading">categories</h1>
+    <div class="categories">
+        <a href=""><i class="fa-solid fa-couch">&nbsp;&nbsp;Sofa</i></a>
+        <a href=""><i class="fa-solid fa-chair">&nbsp;&nbsp;Chairs</i></a>
+        <a href=""><i class="fa-solid fa-bed">&nbsp;&nbsp;Bed</i></a>
+        <a href=""><i class="fa-solid fa-house">&nbsp;&nbsp;Home Decor</i></a>
+    </div>
+
+    <!-- product start -->
+    <div class="products">
+        <!-- Card start -->
+        <div class="card">
+            <img src="assets/pro-img/img1.jpg" alt="Card Image">
+            <div class="card-content">
+                <h3>Rs / 5900</h3>
+
+            </div>
+        </div>
+        <div class="card">
+            <img src="assets/pro-img/img2.jpg" alt="Card Image">
+            <div class="card-content">
+                <h3>Rs / 8900</h3>
+
+            </div>
+        </div>
+        <div class="card">
+            <img src="assets/pro-img/img3.jpg" alt="Card Image">
+            <div class="card-content">
+                <h3>Rs / 9900</h3>
+
+            </div>
+        </div>
+        <div class="card">
+            <img src="assets/pro-img/img4.jpg" alt="Card Image">
+            <div class="card-content">
+                <h3>Rs / 5200</h3>
+
+            </div>
+        </div>
+        <div class="card">
+            <img src="assets/pro-img/img5.jpg" alt="Card Image">
+            <div class="card-content">
+                <h3>Rs / 4900</h3>
+
+            </div>
+        </div>
+        <div class="card">
+            <img src="assets/pro-img/img6.jpg" alt="Card Image">
+            <div class="card-content">
+                <h3>Rs / 2900</h3>
+
+            </div>
+        </div>
+        <div class="card">
+            <img src="assets/pro-img/img7.jpg" alt="Card Image">
+            <div class="card-content">
+                <h3>Rs / 1900</h3>
+
+            </div>
+        </div>
+        <div class="card">
+            <img src="assets/pro-img/img8.jpg" alt="Card Image">
+            <div class="card-content">
+                <h3>Rs / 5900</h3>
+
+            </div>
+        </div>
+        <div class="card">
+            <img src="assets/pro-img/img9.jpg" alt="Card Image">
+            <div class="card-content">
+                <h3>Rs / 8900</h3>
+
+            </div>
+        </div>
+        <div class="card">
+            <img src="assets/pro-img/img10.jpg" alt="Card Image">
+            <div class="card-content">
+                <h3>Rs / 10900</h3>
+
+            </div>
+        </div>
+        <!-- Card end -->
+    </div>
+    <!-- product end -->
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <!-- Contact Info -->
+                <div class="col-md-3">
+                    <h4>Contact Info</h4>
+                    <p>Phone: +92 301 234779</p>
+                    <p>Email: info@example.com</p>
+                </div>
+                <!-- Store Location -->
+                <div class="col-md-3">
+                    <h4>Store Location</h4>
+                    <p>123 Main Street</p>
+                    <p>City, Country</p>
+                </div>
+                <!-- Information -->
+                <div class="col-md-3">
+                    <h4>Information</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <!-- My Account -->
+                <div class="col-md-3">
+                    <h4>My Account</h4>
+                    <ul>
+                        <li><a href="#">Login</a></li>
+                        <li><a href="#">Register</a></li>
+                        <li><a href="#">My Orders</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
